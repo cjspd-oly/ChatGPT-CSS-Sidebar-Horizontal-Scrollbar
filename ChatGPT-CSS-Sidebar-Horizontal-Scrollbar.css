@@ -1,0 +1,43 @@
+/* 🛑 1. Remove per-item horizontal scrolling and fade-out mask */
+nav[aria-label="Chat history"] a {
+  mask-image: none !important; /* 🚫 Remove mask */
+  -webkit-mask-image: none !important; /* 🚫 Remove WebKit mask */
+}
+
+nav[aria-label="Chat history"] .relative.grow.overflow-hidden.whitespace-nowrap {
+  overflow-x: visible !important; /* 🔍 Allow full visibility */
+  white-space: nowrap !important; /* 📝 Prevent line breaks */
+}
+
+/* 📏 2. Let each list item expand to fit its text */
+nav[aria-label="Chat history"] li {
+  width: max-content !important; /* 📜 Ensure items fit their content */
+}
+
+/* 📜 3. Force the <ol> containing all history items to expand to the full width of its content */
+nav[aria-label="Chat history"] ol {
+  display: block; /* 📦 Ensure proper block display */
+  width: max-content !important; /* 🔎 Ensure full expansion */
+}
+
+/* 🔄 4. Make the parent container horizontally scrollable */
+nav[aria-label="Chat history"] .flex-col {
+  overflow-x: auto !important; /* ↔️ Enable horizontal scrolling */
+}
+
+/* ⚠️ 5. (Optional) Add some bottom padding so the horizontal scrollbar is immediately visible */
+nav[aria-label="Chat history"] {
+  padding-bottom: 20px; /* 📏 Add padding for scrollbar visibility */
+}
+
+/* 🔄 Flip the vertical scroll container so its horizontal scrollbar is on top */
+nav[aria-label="Chat history"] .flex-col {
+  overflow-x: auto !important; /* ↔️ Allow horizontal scrolling */
+  overflow-y: auto; /* ↕️ Keep vertical scrolling */
+  transform: rotateX(0deg); /* 🔄 Maintain normal orientation */
+}
+
+/* 🔄 Flip the direct children back to normal so the content reads correctly */
+nav[aria-label="Chat history"] .flex-col > * {
+  transform: rotateX(180deg); /* 🔄 Revert child elements' rotation */
+}
