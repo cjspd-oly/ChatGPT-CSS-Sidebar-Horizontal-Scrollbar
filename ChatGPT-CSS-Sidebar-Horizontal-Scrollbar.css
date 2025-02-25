@@ -1,43 +1,44 @@
-/* 🛑 1. Remove per-item horizontal scrolling and fade-out mask */
+/* 🚫 Remove any mask effect on links to avoid fade-out */
 nav[aria-label="Chat history"] a {
-  mask-image: none !important; /* 🚫 Remove mask */
-  -webkit-mask-image: none !important; /* 🚫 Remove WebKit mask */
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
 }
 
+/* 📝 Ensure text containers show full text without wrapping */
 nav[aria-label="Chat history"] .relative.grow.overflow-hidden.whitespace-nowrap {
-  overflow-x: visible !important; /* 🔍 Allow full visibility */
-  white-space: nowrap !important; /* 📝 Prevent line breaks */
+  overflow-x: visible !important;
+  white-space: nowrap !important;
 }
 
-/* 📏 2. Let each list item expand to fit its text */
+/* 📏 Let each list item expand based on its content */
 nav[aria-label="Chat history"] li {
-  width: max-content !important; /* 📜 Ensure items fit their content */
+  width: max-content !important;
 }
 
-/* 📜 3. Force the <ol> containing all history items to expand to the full width of its content */
+/* 📋 Expand the list container to fit all items */
 nav[aria-label="Chat history"] ol {
-  display: block; /* 📦 Ensure proper block display */
-  width: max-content !important; /* 🔎 Ensure full expansion */
+  display: block;
+  width: max-content !important;
 }
 
-/* 🔄 4. Make the parent container horizontally scrollable */
+/* 🔄 Enable horizontal scrolling for the sidebar container */
 nav[aria-label="Chat history"] .flex-col {
-  overflow-x: auto !important; /* ↔️ Enable horizontal scrolling */
+  overflow-x: auto !important;
 }
 
-/* ⚠️ 5. (Optional) Add some bottom padding so the horizontal scrollbar is immediately visible */
+/* ⬇️ Add bottom padding so the scrollbar remains visible */
 nav[aria-label="Chat history"] {
-  padding-bottom: 20px; /* 📏 Add padding for scrollbar visibility */
+  padding-bottom: 20px;
 }
 
-/* 🔄 Flip the vertical scroll container so its horizontal scrollbar is on top */
+/* 🚀 Set container to allow both horizontal & vertical scrolling without rotation */
 nav[aria-label="Chat history"] .flex-col {
-  overflow-x: auto !important; /* ↔️ Allow horizontal scrolling */
-  overflow-y: auto; /* ↕️ Keep vertical scrolling */
-  transform: rotateX(0deg); /* 🔄 Maintain normal orientation */
+  overflow-x: auto !important;
+  overflow-y: auto;
+  transform: rotateX(0deg);
 }
 
-/* 🔄 Flip the direct children back to normal so the content reads correctly */
+/* 🔄 Flip child elements vertically so text appears in the correct orientation */
 nav[aria-label="Chat history"] .flex-col > * {
-  transform: rotateX(180deg); /* 🔄 Revert child elements' rotation */
+  transform: rotateX(180deg);
 }
